@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HotelBooking.Models;
+using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -14,7 +15,7 @@ public class RoomController : ControllerBase
     [HttpGet]
     public IActionResult GetRooms()
     {
-        IEnumerable<Room> rooms = _roomRepository.GetRooms();
+        var rooms = _roomRepository.GetRooms();
         return Ok(rooms);
     }
 

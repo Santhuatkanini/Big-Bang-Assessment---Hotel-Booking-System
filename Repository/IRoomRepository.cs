@@ -1,4 +1,6 @@
-﻿public interface IRoomRepository
+﻿using HotelBooking.Models;
+
+public interface IRoomRepository
 {
     IEnumerable<Room> GetRoomsByHotelId(int hotelId);
     IEnumerable<Room> GetRooms();
@@ -6,4 +8,6 @@
     void AddRoom(Room room);
     void UpdateRoom(Room room);
     void DeleteRoom(Room room);
+
+    Task<List<Room>> GetAvailableRooms();
 }

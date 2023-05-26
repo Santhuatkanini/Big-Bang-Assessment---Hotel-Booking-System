@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotelBooking.Auth;
+using HotelBooking.Models;
+using Microsoft.EntityFrameworkCore;
 
 public class HotelBookingDbContext : DbContext
 {
@@ -17,4 +19,10 @@ public class HotelBookingDbContext : DbContext
             .WithMany(h => h.Rooms)
             .HasForeignKey(r => r.HotelId);
     }
+    public static implicit operator ApplicationDbContext(HotelBookingDbContext v)
+    {
+        throw new NotImplementedException();
+    }
 }
+
+

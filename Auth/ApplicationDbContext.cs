@@ -9,9 +9,14 @@ namespace HotelBooking.Auth
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        public IEnumerable<object> Rooms { get; internal set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
         }
+
+        
     }
 }

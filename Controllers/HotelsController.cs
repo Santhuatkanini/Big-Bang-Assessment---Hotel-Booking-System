@@ -64,14 +64,14 @@ namespace HotelBooking.Controllers
             return NoContent();
         }
 
-        [HttpGet("filter")]
+        [HttpGet("Filter Hotels Based On Location and Price")]
         public IActionResult FilterHotels(string location, decimal? priceFrom, decimal? priceTo)
         {
             var filteredHotels = _hotelRepository.FilterHotels(location, priceFrom, priceTo);
             return Ok(filteredHotels);
         }
 
-        [HttpGet("{id}/rooms/count")]
+        [HttpGet("Available Rooms based Hotel ID")]
         public IActionResult GetRoomCount(int id)
         {
             var hotel = _hotelRepository.GetHotelById(id);
@@ -80,9 +80,10 @@ namespace HotelBooking.Controllers
                 return NotFound();
             }
 
-            int roomCount = _roomRepository.GetRoomsByHotelId(id).Count();
-            return Ok(roomCount);
+            var availableRoomCount = _roomRepository.GetRoomsByHotelId(id).Count(r => r.Availability);
+            return Ok(availableRoomCount);
         }
-    }
 
+
+    }
 }

@@ -11,7 +11,7 @@ namespace HotelBooking.Migrations
 {
     [DbContext(typeof(HotelBookingDbContext))]
     [Migration("20230526104032_newmigration")]
-    partial class newmigration
+    partial class Newmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
