@@ -1,95 +1,88 @@
-﻿using HotelBooking.Data;
-using HotelBooking.Models;
-using HotelBooking.Repository;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
-
 
 namespace HotelBooking.Controllers
 {
     [ApiController]
-    [Route("api/hotels")]
+    [Route("api/[controller]")]
     public class HotelController : ControllerBase
     {
         private readonly IHotelRepository _hotelRepository;
+        private readonly IRoomRepository _roomRepository;
 
-        public HotelController(IHotelRepository hotelRepository)
+        public HotelController(IHotelRepository hotelRepository, IRoomRepository roomRepository)
         {
             _hotelRepository = hotelRepository;
+            _roomRepository = roomRepository;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetHotels(string location, decimal? minPrice, decimal? maxPrice)
+        public IActionResult GetHotels()
         {
-            var hotels = await _hotelRepository.GetHotels();
-
-            // Apply filtering based on location
-            if (!string.IsNullOrEmpty(location))
-            {
-                hotels = hotels.Where(h => h.Location.ToLower() == location.ToLower());
-            }
-
-            // Apply filtering based on price range
-            if (minPrice.HasValue)
-            {
-                hotels = hotels.Where(h => h.Price >= minPrice.Value);
-            }
-
-            if (maxPrice.HasValue)
-            {
-                hotels = hotels.Where(h => h.Price <= maxPrice.Value);
-            }
-
+            var hotels = _hotelRepository.GetHotels();
             return Ok(hotels);
         }
 
-
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetHotel(int id)
+        public IActionResult GetHotel(int id)
         {
-            var hotel = await _hotelRepository.GetHotelById(id);
+            var hotel = _hotelRepository.GetHotelById(id);
             if (hotel == null)
+            {
                 return NotFound();
-
+            }
             return Ok(hotel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateHotel(Hotel hotel)
+        public IActionResult CreateHotel(Hotel hotel)
         {
-            await _hotelRepository.AddHotel(hotel);
+            _hotelRepository.AddHotel(hotel);
             return CreatedAtAction(nameof(GetHotel), new { id = hotel.Id }, hotel);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateHotel(int id, Hotel hotel)
+        public IActionResult UpdateHotel(int id, Hotel hotel)
         {
             if (id != hotel.Id)
+            {
                 return BadRequest();
-
-            await _hotelRepository.UpdateHotel(hotel);
+            }
+            _hotelRepository.UpdateHotel(hotel);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHotel(int id)
+        public IActionResult DeleteHotel(int id)
         {
-            await _hotelRepository.DeleteHotel(id);
+            var hotel = _hotelRepository.GetHotelById(id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+            _hotelRepository.DeleteHotel(hotel);
             return NoContent();
         }
 
-        [HttpGet("{id}/rooms/count")]
-        public async Task<IActionResult> GetAvailableRoomsCount(int id)
+        [HttpGet("filter")]
+        public IActionResult FilterHotels(string location, decimal? priceFrom, decimal? priceTo)
         {
-            var hotel = await _hotelRepository.GetHotelById(id);
-            if (hotel == null)
-                return NotFound();
-
-            int count = hotel.Rooms.Count(r => r.IsAvailable);
-            return Ok(count);
+            var filteredHotels = _hotelRepository.FilterHotels(location, priceFrom, priceTo);
+            return Ok(filteredHotels);
         }
 
+        [HttpGet("{id}/rooms/count")]
+        public IActionResult GetRoomCount(int id)
+        {
+            var hotel = _hotelRepository.GetHotelById(id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+
+            int roomCount = _roomRepository.GetRoomsByHotelId(id).Count();
+            return Ok(roomCount);
+        }
     }
 
 }

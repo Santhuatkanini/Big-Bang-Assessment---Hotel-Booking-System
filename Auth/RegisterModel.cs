@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JWT_API.Auth
+namespace HotelBooking.Auth
 {
     public class RegisterModel
     {

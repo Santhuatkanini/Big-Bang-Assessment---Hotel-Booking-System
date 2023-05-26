@@ -1,4 +1,4 @@
-﻿namespace JWT_API.Auth
+﻿namespace HotelBooking.Auth
 {
     public class Response
     {

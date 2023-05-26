@@ -282,3 +282,6 @@ C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.AspN
 C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

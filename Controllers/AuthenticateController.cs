@@ -1,4 +1,4 @@
-﻿using JWT_API.Auth;
+﻿using HotelBooking.Auth;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace JWT_API.Controllers
+namespace HotelBooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

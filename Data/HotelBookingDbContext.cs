@@ -1,29 +1,20 @@
-﻿using HotelBooking.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace HotelBooking.Data
+public class HotelBookingDbContext : DbContext
 {
-    public class HotelBookingDbContext : DbContext
+    public HotelBookingDbContext(DbContextOptions<HotelBookingDbContext> options) : base(options)
     {
-        public DbSet<Hotel> Hotels { get; set; }
-        public DbSet<Room> Rooms { get; set; }
+    }
 
-        public HotelBookingDbContext(DbContextOptions<HotelBookingDbContext> options)
-        : base(options)
-        {
-        }
+    public DbSet<Hotel> Hotels { get; set; }
+    public DbSet<Room> Rooms { get; set; }
 
-       
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Hotel>()
-                .HasMany(h => h.Rooms)
-                .WithOne(r => r.Hotel)
-                .HasForeignKey(r => r.HotelId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            base.OnModelCreating(modelBuilder);
-        }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Configure one-to-many relationship
+        modelBuilder.Entity<Room>()
+            .HasOne(r => r.Hotel)
+            .WithMany(h => h.Rooms)
+            .HasForeignKey(r => r.HotelId);
     }
 }
