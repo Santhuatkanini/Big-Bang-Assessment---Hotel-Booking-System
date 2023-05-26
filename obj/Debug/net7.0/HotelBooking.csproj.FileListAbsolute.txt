@@ -276,3 +276,9 @@ C:\Users\Administrator\source\repos\HotelBooking\obj\Debug\net7.0\refint\HotelBo
 C:\Users\Administrator\source\repos\HotelBooking\obj\Debug\net7.0\HotelBooking.pdb
 C:\Users\Administrator\source\repos\HotelBooking\obj\Debug\net7.0\HotelBooking.genruntimeconfig.cache
 C:\Users\Administrator\source\repos\HotelBooking\obj\Debug\net7.0\ref\HotelBooking.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Administrator\source\repos\HotelBooking\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

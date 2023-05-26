@@ -8,10 +8,12 @@ namespace HotelBooking.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Room> Rooms { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public HotelBookingDbContext(DbContextOptions<HotelBookingDbContext> options)
+        : base(options)
         {
-            optionsBuilder.UseSqlServer("YourConnectionString");
         }
+
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +22,8 @@ namespace HotelBooking.Data
                 .WithOne(r => r.Hotel)
                 .HasForeignKey(r => r.HotelId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
