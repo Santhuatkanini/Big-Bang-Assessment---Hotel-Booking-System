@@ -1,7 +1,7 @@
-﻿using HotelBooking.Models;
+﻿using HotelBookingSample.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelBooking.Repository
+namespace HotelBookingSample.Repository
 {
     public class RoomRepository : IRoomRepository
     {
@@ -22,6 +22,24 @@ namespace HotelBooking.Repository
             return _context.Rooms.Find(id);
         }
 
+
+        public IEnumerable<object> GetRoomsByAmenity(string amenity)
+        {
+            var lowercasedAmenity = amenity.ToLowerInvariant();
+
+            return _context.Rooms
+                
+                .ToList()
+                .Where(r => r.Amenity.ToLowerInvariant() == lowercasedAmenity)
+                .Select(r => new
+                {
+                    Price = r.Price,
+                    Type = r.RoomType,
+                    Occupancy = r.RoomOccupancy
+                })
+                .ToList();
+        }
+
         public void AddRoom(Room room)
         {
             _context.Rooms.Add(room);
@@ -40,10 +58,7 @@ namespace HotelBooking.Repository
             _context.SaveChanges();
         }
 
-        public IEnumerable<Room> GetRooms()
-        {
-            return _context.Rooms.ToList();
-        }
+        
 
         public async Task<List<Room>> GetAvailableRooms()
         {
@@ -57,11 +72,27 @@ namespace HotelBooking.Repository
             }
             catch (Exception ex)
             {
-                // Handle any exceptions
+               
                 return null;
             }
         }
 
+        public object GetAvailableRoomCountByHotelId(int hotelId)
+        {
+            return _context.Rooms.Count(r => r.HotelId == hotelId && r.Availability);
+        }
+
+       
+
+        public object GetAvailableRoomCount(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Room> GetRooms()
+        {
+            return _context.Rooms.ToList();
+        }
 
     }
 }

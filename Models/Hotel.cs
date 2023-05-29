@@ -1,12 +1,14 @@
-﻿using HotelBooking.Models;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
-public class Hotel
+namespace HotelBookingSample.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Location { get; set; }
-    
-    public ICollection<Room> Rooms { get; set; }
+    public class Hotel 
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
 
-  
+       
+    }
 }

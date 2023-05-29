@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AFz/EcQhM4V+POY6nvh0eNRjMg8Z+yqIRoKzg2n5aOZerUWGbUK35MzmApLnREWisbrhx95XFCS5qW+50clSQQ==",
+  "dgSpecHash": "q05T688hxxcWYo5pOZ/QVTGo0cyXR2fTusWzee9Cr8SSbrzBvuqzKJYtfvxJJEUsZPVYacUsOBWwGbl5BsoQDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\HotelBooking\\HotelBooking.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\HotelBookingSample\\HotelBookingSample.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

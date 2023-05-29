@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\HotelBooking\\HotelBooking.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\HotelBookingSample\\HotelBooking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\HotelBooking\\HotelBooking.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\HotelBookingSample\\HotelBooking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\HotelBooking\\HotelBooking.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\HotelBookingSample\\HotelBooking.csproj",
         "projectName": "HotelBooking",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\HotelBooking\\HotelBooking.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\HotelBookingSample\\HotelBooking.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\HotelBooking\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\HotelBookingSample\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",

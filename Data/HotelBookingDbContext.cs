@@ -1,6 +1,6 @@
-﻿using HotelBooking.Auth;
-using HotelBooking.Models;
+﻿using HotelBookingSample.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 public class HotelBookingDbContext : DbContext
 {
@@ -10,19 +10,12 @@ public class HotelBookingDbContext : DbContext
 
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<Room> Rooms { get; set; }
+    public DbSet<Booking> Bookings { get; set; }
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Configure one-to-many relationship
-        modelBuilder.Entity<Room>()
-            .HasOne(r => r.Hotel)
-            .WithMany(h => h.Rooms)
-            .HasForeignKey(r => r.HotelId);
     }
-    public static implicit operator ApplicationDbContext(HotelBookingDbContext v)
-    {
-        throw new NotImplementedException();
-    }
+
 }
-
-
